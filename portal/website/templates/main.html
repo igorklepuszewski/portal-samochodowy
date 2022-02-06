@@ -20,15 +20,18 @@
     </tr>
 {% for car in cars %}
     <tr>
-        <td>{{ car.main.make }}</td>
-        <td>{{ car.main.model }}</td>
-        <td>{{ car.detail.get_color_display }}</td>
-        <td>{{ car.detail.seats }}</td>
-        <td>{{ car.detail.get_fuel_display }}</td>
-        <td>{{ car.detail.power }}</td>
-        <td>{{ car.detail.production_date }}</td>
-        <td>${{ car.detail.price }}</td>
+                <td>{{ car.main.make }}</td>
+                <td>{{ car.main.model }}</td>
+                <td>{{ car.detail.get_color_display }}</td>
+                <td>{{ car.detail.seats }}</td>
+                <td>{{ car.detail.get_fuel_display }}</td>
+                <td>{{ car.detail.power }}</td>
+                <td>{{ car.detail.production_date }}</td>
+                <td>${{ car.detail.price }}</td>
+                <td><a href="{% url 'car' car.id %}"> GO </a></td>
+
     </tr>
+
 {% endfor %}
 </table>
 {% endblock content %}
