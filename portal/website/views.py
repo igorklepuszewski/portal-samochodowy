@@ -68,3 +68,12 @@ def main_view(request):
         context["car_detail_form"] = car_detail_form
         context["car_main_form"] = car_main_form
         return render(request, template, context)
+
+
+def car_view(request, pk):
+    template="car.html"
+    context={}
+    if request.method == "GET":
+        car = Car.objects.get(id=pk)
+        context['car'] = car
+        return render(request, template, context)
