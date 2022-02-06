@@ -19,6 +19,7 @@ def main_view(request):
         car_main_form = CarMainForm(request.POST, prefix='main')
         if car_detail_form.is_valid() and car_main_form.is_valid():
             make = car_main_form.cleaned_data['make']
+
             model = car_main_form.cleaned_data['model']
             color = car_detail_form.cleaned_data['color']
             seats = car_detail_form.cleaned_data['seats']
@@ -35,10 +36,11 @@ def main_view(request):
                 detail__fuel=fuel,
                 detail__power__gte=power_min,
                 detail__power__lte=power_max,
-                detail__production_date__gte=production_date_end,
-                detail__production_date__lte=production_date_start,
+                detail__production_date__lte=production_date_end,
+                detail__production_date__gte=production_date_start,
             )
             context['cars'] = cars
+            print(cars)
         context["car_detail_form"] = car_detail_form
         context["car_main_form"] = car_main_form
         return render(request, template, context)

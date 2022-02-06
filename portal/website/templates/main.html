@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-{{ car_detail_form }}
-{{ car_main_form }}
+<form method="post">
+    {% csrf_token %}
+    {{ car_detail_form }}
+    {{ car_main_form }}
+    <input type="submit" value="Search">
+</form>
+
 {% endblock content %}
