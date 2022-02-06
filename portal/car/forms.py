@@ -1,6 +1,7 @@
 from .models import Car, CarDetail, CarMain
 from django.forms import ModelForm, DateInput
 from django import forms
+from django.core.validators import MinValueValidator
 
 class CarForm(ModelForm):
     class Meta:
@@ -25,9 +26,11 @@ class CarDetailForm(ModelForm):
             ))
     power_min = forms.IntegerField(min_value=0)
     power_max = forms.IntegerField(min_value=0)
+    price_min = forms.DecimalField(max_digits=9, decimal_places=2, validators=[MinValueValidator(0.00)])
+    price_max = forms.DecimalField(max_digits=9, decimal_places=2, validators=[MinValueValidator(0.00)])
     class Meta:
         model = CarDetail
-        exclude = ('car', 'power', 'production_date')
+        exclude = ('car', 'power', 'production_date', 'price')
 
 
     def __init__(self, *args, **kwargs):
@@ -39,6 +42,8 @@ class CarDetailForm(ModelForm):
         self.fields['production_date_start'].required = False
         self.fields['power_min'].required = False
         self.fields['power_max'].required = False
+        self.fields['price_min'].required = False
+        self.fields['price_max'].required = False
 
 
 class CarMainForm(ModelForm):

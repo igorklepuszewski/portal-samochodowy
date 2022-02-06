@@ -48,6 +48,13 @@ def main_view(request):
             if power_max:
                 cars = cars.filter(detail__power__lte=power_max)
 
+            price_min = car_detail_form.cleaned_data['price_min']
+            price_max = car_detail_form.cleaned_data['price_max']
+            if power_min:
+                cars = cars.filter(detail__price__gte=price_min)
+            if power_max:
+                cars = cars.filter(detail__price__lte=price_max)
+
 
             production_date_start = car_detail_form.cleaned_data['production_date_start']
             production_date_end = car_detail_form.cleaned_data['production_date_end']

@@ -26,6 +26,7 @@ class CarDetail(models.Model):
     seats = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(9)])
     fuel = models.CharField(max_length=3, choices=CAR_FUELS)
     power = models.PositiveIntegerField()
+    price = models.DecimalField(max_digits=9, decimal_places=2, validators=[MinValueValidator(0.00)])
 
 class Car(models.Model):
     main = models.ForeignKey(CarMain, on_delete=models.CASCADE)
