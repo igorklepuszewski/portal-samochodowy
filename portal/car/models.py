@@ -35,3 +35,6 @@ class Car(models.Model):
         super(Car, self).delete()
         self.detail.delete()
 
+    def __str__(self):
+        return f"{self.main.make} {self.main.model}"
+
