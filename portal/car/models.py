@@ -22,9 +22,9 @@ class CarDetail(models.Model):
         ("ELE", "Electric"),
     ]
     production_date = models.DateField()
-    color = models.CharField(max_length=3, choices=CAR_COLORS, default="BLA")
+    color = models.CharField(max_length=3, choices=CAR_COLORS)
     seats = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(9)])
-    fuel = models.CharField(max_length=3, choices=CAR_FUELS, default="PET")
+    fuel = models.CharField(max_length=3, choices=CAR_FUELS)
     power = models.PositiveIntegerField()
 
 class Car(models.Model):

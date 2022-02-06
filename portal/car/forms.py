@@ -30,7 +30,23 @@ class CarDetailForm(ModelForm):
         exclude = ('car', 'power', 'production_date')
 
 
+    def __init__(self, *args, **kwargs):
+        super(CarDetailForm, self).__init__(*args, **kwargs)
+        self.fields['color'].required = False
+        self.fields['seats'].required = False
+        self.fields['fuel'].required = False
+        self.fields['production_date_end'].required = False
+        self.fields['production_date_start'].required = False
+        self.fields['power_min'].required = False
+        self.fields['power_max'].required = False
+
+
 class CarMainForm(ModelForm):
     class Meta:
         model = CarMain
         exclude = ('car', )
+
+    def __init__(self, *args, **kwargs):
+        super(CarMainForm, self).__init__(*args, **kwargs)
+        self.fields['model'].required = False
+        self.fields['make'].required = False

@@ -8,4 +8,26 @@
     <input type="submit" value="Search">
 </form>
 
+{% for car in cars %}
+<table>
+    <tr>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Color</th>
+        <th>Seats</th>
+        <th>Fuel</th>
+        <th>Power</th>
+        <th>Production Date</th>
+    </tr>
+    <tr>
+        <td>{{ car.main.make }}</td>
+        <td>{{ car.main.model }}</td>
+        <td>{{ car.detail.color }}</td>
+        <td>{{ car.detail.seats }}</td>
+        <td>{{ car.detail.fuel }}</td>
+        <td>{{ car.detail.power }}</td>
+        <td>{{ car.detail.production_date }}</td>
+    </tr>
+</table>
+{% endfor %}
 {% endblock content %}
